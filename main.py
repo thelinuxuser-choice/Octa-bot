@@ -24,16 +24,29 @@ async def sum(ctx, numOne: int, numTwo: int,name='sum',help='this command will s
     await ctx.send(embed=embed)
 
 @bot.command()
-async def info(ctx,name='info',help='this command will get infomation about your server'):
-    embed = discord.Embed(title=f"{ctx.guild.name}", description="your server informations bot is coded by subodha prabash", timestamp=datetime.datetime.utcnow(), color=discord.Color.green())
-    embed.add_field(name="Server created at", value=f"{ctx.guild.created_at}")
-    embed.add_field(name="Server Owner", value=f"{ctx.guild.owner}")
-    embed.add_field(name="Server Region", value=f"{ctx.guild.region}")
-    embed.add_field(name="Server ID", value=f"{ctx.guild.id}")
-    embed.set_thumbnail(url=f"{ctx.guild.icon}")
-    embed.set_thumbnail(url="https://i.postimg.cc/LX1rzZwQ/images.png")
-    embed.set_footer(text=ctx.author.name, icon_url=ctx.author.avatar_url)
-    await ctx.send(embed=embed)
+async def serverinfo(ctx):
+  name = str(ctx.guild.name)
+  description = str(ctx.guild.description)
+
+  owner = str(ctx.guild.owner)
+  id = str(ctx.guild.id)
+  region = str(ctx.guild.region)
+  memberCount = str(ctx.guild.member_count)
+
+  icon = str(ctx.guild.icon_url)
+   
+  embed = discord.Embed(
+      title=name + " Server Information",
+      description=description,
+      color=discord.Color.green()
+    )
+  embed.set_thumbnail(url=icon)
+  embed.add_field(name="Owner", value=owner, inline=True)
+  embed.add_field(name="Server ID", value=id, inline=True)
+  embed.add_field(name="Region", value=region, inline=True)
+  embed.add_field(name="Member Count", value=memberCount, inline=True)
+  embed.set_footer(text=ctx.author.name , icon_url=ctx.author.avatar_url)
+  await ctx.send(embed=embed) 
 
 
 @bot.command()
