@@ -115,7 +115,7 @@ async def on_message_edit(ctx,message_before, message_after):
         author = message_before.author
         guild = message_before.guild.name
         channel = message_before.channel
-        embed = discord.Embed(title=f"""original message was {message_before.content} new message is {message_after.content}"""  ,timestamp=datetime.datetime.utcnow(), 
+        embed = discord.Embed(title=f"original message was {message_before.content} new message is {message_after.content}" ,timestamp=datetime.datetime.utcnow(), 
         color=discord.Color.red())
         await ctx.send(embed=embed)
 
