@@ -109,27 +109,23 @@ async def slap(ctx, members: commands.Greedy[discord.Member], *, reason='no reas
     embed.set_footer(text=ctx.author.name , icon_url=ctx.author.avatar_url)
     await ctx.send(embed=embed)
 
-    
 @bot.event
-async def on_message_delete(message):
-     snipe_message_author[message.channel.id] = message.author
-     snipe_message_content[message.channel.id] = message.content
-     await sleep(60)
-     del snipe_message_author[message.channel.id]
-     del snipe_message_content[message.channel.id]
-
-@bot.command(name = 'snipe')
-async def snipe(ctx):
-    channel = ctx.channel
-    try: #This piece of code is run if the bot finds anything in the dictionary
-        em = discord.Embed(name = f"Last deleted message in #{channel.name}", description = snipe_message_content[channel.id])
-        em.set_footer(text = f"This message was sent by {snipe_message_author[channel.id]}")
-        await ctx.send(embed = em)
-    except: #This piece of code is run if the bot doesn't find anything in the dictionary
-        await ctx.send(f"There are no recently deleted messages in #{channel.name}")
+async def on_message_edit(message_before, message_after):
+      
+        author = message_before.author
+        guild = message_before.guild.name
+        channel = message_before.channel
 
 
-#If the bot sends the embed, but it's empty, it simply means that the deleted message was either a media file or another embed.
+        await channel.send(f"""
+   
+        Original Message
+        {message_before.content}
+
+        Updated Message
+        {message_after.content}""")
+
+
 
 
 
