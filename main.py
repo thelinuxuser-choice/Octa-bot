@@ -108,16 +108,22 @@ async def slap(ctx, members: commands.Greedy[discord.Member], *, reason='no reas
     color=discord.Color.red())
     embed.set_footer(text=ctx.author.name , icon_url=ctx.author.avatar_url)
     await ctx.send(embed=embed)
-
 @bot.event
-async def on_message_edit(ctx,message_before, message_after):
+async def on_message_edit(message_before, message_after):
       
         author = message_before.author
         guild = message_before.guild.name
         channel = message_before.channel
-        embed = discord.Embed(title=f"original message was {message_before.content} new message is {message_after.content}" ,timestamp=datetime.datetime.utcnow(), 
-        color=discord.Color.red())
-        await ctx.send(embed=embed)
+
+
+        await channel.send(f"""
+   
+        Original Message :kissing:
+        {message_before.content}
+
+        Updated Message :smile: 
+        {message_after.content}""")
+
 
 
 
