@@ -110,7 +110,7 @@ async def slap(ctx, members: commands.Greedy[discord.Member], *, reason='no reas
     await ctx.send(embed=embed)
 
 @bot.event
-async def on_message_edit(message_before, message_after):
+async def on_message_edit(ctx,message_before, message_after):
       
         author = message_before.author
         guild = message_before.guild.name
