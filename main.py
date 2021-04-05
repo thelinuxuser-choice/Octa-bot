@@ -141,5 +141,27 @@ async def hack(ctx):
   await message.edit(content="[:wave:]**exiting tor nodes ....**")
 
 
+    
+ 
+@bot.command()
+async def iptrack(ctx, ip: str,name='iptrack',help='this command can track ips'):
+ from requests import get
+ track = get(f'https://ipapi.co/{ip}/json/')
+ traced = (track.json())
+ await ctx.send(f"```py\ntracked ip is\n{traced}```")
+ embed = discord.Embed(title="Track ip easily", description="ip tracker", timestamp=datetime.datetime.utcnow(), color=discord.Color.red())
+ icon = str(ctx.guild.icon_url)
+ embed.set_thumbnail(url=icon)
+ embed.set_footer(text=ctx.author.name, icon_url=ctx.author.avatar_url)
+ await ctx.send(embed=embed)   
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 bot.run('ODI3MjE1NDU0MjM4MDE1NTk4.YGXybQ.fRp13Oxwr9iIolzwmevBVWBr4tg')
