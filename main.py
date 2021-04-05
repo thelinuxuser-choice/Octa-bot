@@ -71,14 +71,14 @@ async def on_ready():
 
 @bot.command()
 async def iptrack(ctx, ip: str,name='iptrack',help='this command can track ips'):
+      import asyncio
       from requests import get
       track = get(f'https://ipapi.co/{ip}/json/')
       traced = (track.json())
       await ctx.send(f"```py\ntracked ip is\n{traced}```")
-      embed = discord.Embed(title="Track ip easily", description="project on my github", timestamp=datetime.datetime.utcnow(), color=discord.Color.red())
-      embed.set_thumbnail(url="https://i.postimg.cc/dVy6jkYg/download.png")
-      embed.set_footer(text=ctx.author.name, icon_url=ctx.author.avatar_url)
-      await ctx.send(embed=embed) 
+      message = await ctx.send("[:octopus:]`USE my github link for more tools link will be display in 10 seconds`")
+      await asyncio.sleep(10)
+      await message.edit(content="**https://github.com/thelinuxuser-choice/**")
 
 
 
@@ -110,6 +110,21 @@ async def slap(ctx, members: commands.Greedy[discord.Member], *, reason='no reas
     await ctx.send(embed=embed)
 
 
+
+@bot.command()
+async def hack(ctx):
+  import asyncio
+  message = await ctx.send("[:octopus:]`hacking the NASA`")
+  await asyncio.sleep(3)
+  await message.edit(content="[:key:]**IP FOUND!**")
+  await asyncio.sleep(3)
+  await message.edit(content="[:warning:] `DDOSING the ip of NASA {127.0.0.1}`")
+  await asyncio.sleep(3)
+  await message.edit(content="[:sos:]**Deploying botnets and sending 'weareanonymous' in tcp packets...**")
+  await asyncio.sleep(4)
+  await message.edit(content="> successfully taken down the nasa website now corps will come for ya!")
+  await asyncio.sleep(4)
+  await message.edit(content="[:wave:]**exiting tor nodes ....**")
 
 
 
