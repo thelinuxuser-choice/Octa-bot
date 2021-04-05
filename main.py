@@ -49,8 +49,28 @@ async def serverinfo(ctx):
   await ctx.send(embed=embed) 
 
 
+    
 @bot.command()
-async def helpme(ctx):
+async def greet(ctx,content:str):
+  import asyncio
+  message = await ctx.send("`starting greetings `:smile:")
+  await asyncio.sleep(3)
+  await message.edit(content="`h`")
+  await asyncio.sleep(1)
+  await message.edit(content="`he`")
+  await asyncio.sleep(1)
+  await message.edit(content="`hel`")
+  await asyncio.sleep(1)
+  await message.edit(content="`hell`")
+  await asyncio.sleep(1)
+  await message.edit(content="`hello`")
+  await asyncio.sleep(1)
+  await message.edit(content="`hellow`")
+  await asyncio.sleep(1)
+  await message.edit(content=f"`hellow`{content} `hope you are good!`")
+
+ @bot.command()
+ async def helpme(ctx):
     embed = discord.Embed(title="COMMANDS LIST", description="Help list", timestamp=datetime.datetime.utcnow(), color=discord.Color.green())
     embed.add_field(name="command name", value="help")
     embed.add_field(name="Usage", value=">help")
