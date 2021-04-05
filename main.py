@@ -3,7 +3,7 @@ from discord.ext import commands
 import datetime 
 
 
-bot = commands.Bot(command_prefix='>', description="hi welcome :D ")
+bot = commands.Bot(command_prefix='.', description="hi welcome :D ")
 
 @bot.command()
 async def ping(ctx,name='ping',help='this command can bot s latency'):  
@@ -49,28 +49,8 @@ async def serverinfo(ctx):
   await ctx.send(embed=embed) 
 
 
-    
 @bot.command()
-async def greet(ctx,content:str):
-  import asyncio
-  message = await ctx.send("`starting greetings `:smile:")
-  await asyncio.sleep(3)
-  await message.edit(content="`h`")
-  await asyncio.sleep(1)
-  await message.edit(content="`he`")
-  await asyncio.sleep(1)
-  await message.edit(content="`hel`")
-  await asyncio.sleep(1)
-  await message.edit(content="`hell`")
-  await asyncio.sleep(1)
-  await message.edit(content="`hello`")
-  await asyncio.sleep(1)
-  await message.edit(content="`hellow`")
-  await asyncio.sleep(1)
-  await message.edit(content=f"`hellow`{content} `hope you are good!`")
-
- @bot.command()
- async def helpme(ctx):
+async def helpme(ctx):
     embed = discord.Embed(title="COMMANDS LIST", description="Help list", timestamp=datetime.datetime.utcnow(), color=discord.Color.green())
     embed.add_field(name="command name", value="help")
     embed.add_field(name="Usage", value=">help")
@@ -89,17 +69,6 @@ async def on_ready():
     
 
 
-@bot.command()
-async def iptrack(ctx, ip: str,name='iptrack',help='this command can track ips'):
-      import asyncio
-      from requests import get
-      track = get(f'https://ipapi.co/{ip}/json/')
-      traced = (track.json())
-      await ctx.send(f"```py\ntracked ip is\n{traced}```")
-      message = await ctx.send("[:octopus:]`USE my github link for more tools link will be display in 10 seconds`")
-      await asyncio.sleep(10)
-      await message.edit(content="**https://github.com/thelinuxuser-choice/**")
-
 
 
 @bot.command(name='clear', help='this command will clear messages ask author for permission')
@@ -108,7 +77,7 @@ async def clear(ctx, amount:int,static=1):
   
     await ctx.channel.purge(limit=amount)
     author = ctx.author.name
-    await ctx.send(f"CLEARED {amount} MESSAGES...BY {author} ")
+    await ctx.send(f"`CLEARED`{amount}`MESSAGES...BY `{author} ")
  else:
     await ctx.send('You do not have permission to delete this messages')      
     
@@ -129,6 +98,31 @@ async def slap(ctx, members: commands.Greedy[discord.Member], *, reason='no reas
     embed.set_footer(text=ctx.author.name , icon_url=ctx.author.avatar_url)
     await ctx.send(embed=embed)
 
+@bot.command()
+async def greet(ctx,content:str):
+  import asyncio
+  message = await ctx.send("`starting greetings `:smile:")
+  await asyncio.sleep(3)
+  await message.edit(content="`h`")
+  await asyncio.sleep(1)
+  await message.edit(content="`he`")
+  await asyncio.sleep(1)
+  await message.edit(content="`hel`")
+  await asyncio.sleep(1)
+  await message.edit(content="`hell`")
+  await asyncio.sleep(1)
+  await message.edit(content="`hello`")
+  await asyncio.sleep(1)
+  await message.edit(content="`hellow`")
+  await asyncio.sleep(1)
+  await message.edit(content=f"`hellow`{content} `hope you are good!`")
+
+
+
+
+
+
+
 
 
 @bot.command()
@@ -145,11 +139,6 @@ async def hack(ctx):
   await message.edit(content="> successfully taken down the nasa website now corps will come for ya!")
   await asyncio.sleep(4)
   await message.edit(content="[:wave:]**exiting tor nodes ....**")
-
-
-
-
-
 
 
 
