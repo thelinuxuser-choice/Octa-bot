@@ -3,7 +3,7 @@ from discord.ext import commands
 import datetime 
 
 
-bot = commands.Bot(command_prefix='.', description="hi welcome :D ")
+bot = commands.Bot(command_prefix='>', description="hi welcome :D ")
 
 @bot.command()
 async def ping(ctx,name='ping',help='this command can bot s latency'):  
