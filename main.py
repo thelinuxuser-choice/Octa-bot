@@ -122,6 +122,8 @@ async def greet(ctx,content:str):
   await message.edit(content="`hellow`")
   await asyncio.sleep(1)
   await message.edit(content=f"`hellow`{content} `hope you are good!`")
+  emoji = '\N{THUMBS UP SIGN}'
+  await message.add_reaction(emoji)
 
 
 
@@ -145,6 +147,8 @@ async def hack(ctx):
   await message.edit(content="> successfully taken down the nasa website now corps will come for ya!")
   await asyncio.sleep(4)
   await message.edit(content="[:wave:]**exiting tor nodes ....**")
+  emoji = '\N{THUMBS UP SIGN}'
+  await message.add_reaction(emoji)
 
 
     
