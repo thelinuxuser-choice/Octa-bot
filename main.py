@@ -10,7 +10,7 @@ async def ping(ctx,name='ping',help='this command can bot s latency'):
     # Get the latency of the bot
     latency = bot.latency  # Included in the Discord.py library
     # Send it to the user
-    embed = discord.Embed(title=f"Ping.. Pong ..latency is {latency}", description="👌 how fast am i?", timestamp=datetime.datetime.utcnow(), color=discord.Color.red())
+    embed = discord.Embed(title=f"`Ping.. Pong ..latency is `{latency}", description="👌 how fast am i?", timestamp=datetime.datetime.utcnow(), color=discord.Color.red())
     embed.set_thumbnail(url="https://i.postimg.cc/FH4pGFHR/images.png")
     sender = ctx.author.name
     embed.set_footer(text=f"This was requested by {sender}", icon_url=ctx.author.avatar_url)
@@ -19,7 +19,7 @@ async def ping(ctx,name='ping',help='this command can bot s latency'):
 @bot.command()
 async def sum(ctx, numOne: int, numTwo: int,name='sum',help='this command will sums numbers what you insert'):
     output = (numOne + numTwo)
-    embed = discord.Embed(title=f"Sum is {output}", description="i ❤ sums", timestamp=datetime.datetime.utcnow(), color=discord.Color.green())
+    embed = discord.Embed(title=f"`Sum is` {output}", description="i ❤ sums", timestamp=datetime.datetime.utcnow(), color=discord.Color.green())
     embed.set_thumbnail(url="https://i.postimg.cc/XNyV8r9b/download.jpg")
     sender = ctx.author.name
     embed.set_footer(text=f"This was requested by {sender}", icon_url=ctx.author.avatar_url)
@@ -54,11 +54,11 @@ async def serverinfo(ctx):
 
 @bot.command()
 async def helpme(ctx):
-    embed = discord.Embed(title="COMMANDS LIST", description="Help list", timestamp=datetime.datetime.utcnow(), color=discord.Color.green())
-    embed.add_field(name="command name", value="help")
-    embed.add_field(name="Usage", value=">help")
-    embed.add_field(name="explained", value="shows this")
-    embed.add_field(name="Enjoy!", value="✔bot is coded by subodha prabash")
+    embed = discord.Embed(title="`COMMANDS LIST`", description="Help list", timestamp=datetime.datetime.utcnow(), color=discord.Color.green())
+    embed.add_field(name="`command name`", value="`help`")
+    embed.add_field(name="`Usage`", value="`>help`")
+    embed.add_field(name="`explained`", value="`shows this`")
+    embed.add_field(name="`Enjoy!`", value="✔`bot is coded by subodha prabash`")
     embed.set_thumbnail(url="https://i.postimg.cc/sXx0cG8C/868681.png")
     sender = ctx.author.name
     embed.set_footer(text=f"This was requested by {sender}", icon_url=ctx.author.avatar_url)
@@ -98,7 +98,7 @@ async def print(ctx, *, content:str, name='print',help='this command will echo w
 @bot.command()
 async def slap(ctx, members: commands.Greedy[discord.Member], *, reason='no reason'):
     slapped = ", ".join(x.name for x in members)
-    embed = discord.Embed(title= ('{} just got slapped for {}'.format(slapped, reason)),timestamp=datetime.datetime.utcnow(), 
+    embed = discord.Embed(title= ('{} `just got slapped for` {}'.format(slapped, reason)),timestamp=datetime.datetime.utcnow(), 
     color=discord.Color.red())
     sender = ctx.author.name
     embed.set_footer(text=f"This was requested by {sender}", icon_url=ctx.author.avatar_url)
