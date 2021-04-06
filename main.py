@@ -148,12 +148,12 @@ async def iptrack(ctx, ip: str,name='iptrack',help='this command can track ips')
  from requests import get
  track = get(f'https://ipapi.co/{ip}/json/')
  traced = (track.json())
- await ctx.send(f"```py\ntracked ip is\n{traced}```")
- embed = discord.Embed(title="Track ip easily", description="ip tracker", timestamp=datetime.datetime.utcnow(), color=discord.Color.red())
- icon = str(ctx.guild.icon_url)
- embed.set_thumbnail(url=icon)
- embed.set_footer(text=ctx.author.name, icon_url=ctx.author.avatar_url)
- await ctx.send(embed=embed)   
+ embed = discord.Embed(title=":small_red_triangle:IP TRACKER:small_red_triangle_down: ", description="**project on my github** :pirate_flag:", timestamp=datetime.datetime.utcnow(), color=discord.Color.green())
+ embed.set_thumbnail(url="https://i.postimg.cc/XvWHrS3d/tenor.gif")
+ sender = ctx.author.name
+ embed.set_footer(text=f"This was requested by {sender}", icon_url=ctx.author.avatar_url)
+ embed.add_field(name=f"Results for ip - {ip} ", value=f"```{traced}```")
+ await ctx.send(embed=embed)
     
     
     
