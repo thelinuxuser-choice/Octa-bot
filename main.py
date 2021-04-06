@@ -12,7 +12,8 @@ async def ping(ctx,name='ping',help='this command can bot s latency'):
     # Send it to the user
     embed = discord.Embed(title=f"Ping.. Pong ..latency is {latency}", description="👌 how fast am i?", timestamp=datetime.datetime.utcnow(), color=discord.Color.red())
     embed.set_thumbnail(url="https://i.postimg.cc/FH4pGFHR/images.png")
-    embed.set_footer(text=ctx.author.name, icon_url=ctx.author.avatar_url)
+    sender = ctx.author.name
+    embed.set_footer(text=f"This was requested by {sender}", icon_url=ctx.author.avatar_url)
     await ctx.send(embed=embed)
 
 @bot.command()
@@ -20,7 +21,8 @@ async def sum(ctx, numOne: int, numTwo: int,name='sum',help='this command will s
     output = (numOne + numTwo)
     embed = discord.Embed(title=f"Sum is {output}", description="i ❤ sums", timestamp=datetime.datetime.utcnow(), color=discord.Color.green())
     embed.set_thumbnail(url="https://i.postimg.cc/XNyV8r9b/download.jpg")
-    embed.set_footer(text=ctx.author.name, icon_url=ctx.author.avatar_url)
+    sender = ctx.author.name
+    embed.set_footer(text=f"This was requested by {sender}", icon_url=ctx.author.avatar_url)
     await ctx.send(embed=embed)
 
 @bot.command()
@@ -45,7 +47,8 @@ async def serverinfo(ctx):
   embed.add_field(name="Server ID", value=id, inline=True)
   embed.add_field(name="Region", value=region, inline=True)
   embed.add_field(name="Member Count", value=memberCount, inline=True)
-  embed.set_footer(text=ctx.author.name , icon_url=ctx.author.avatar_url)
+  sender = ctx.author.name
+  embed.set_footer(text=f"This was requested by {sender}", icon_url=ctx.author.avatar_url)
   await ctx.send(embed=embed) 
 
 
@@ -57,7 +60,8 @@ async def helpme(ctx):
     embed.add_field(name="explained", value="shows this")
     embed.add_field(name="Enjoy!", value="✔bot is coded by subodha prabash")
     embed.set_thumbnail(url="https://i.postimg.cc/sXx0cG8C/868681.png")
-    embed.set_footer(text=ctx.author.name, icon_url=ctx.author.avatar_url)
+    sender = ctx.author.name
+    embed.set_footer(text=f"This was requested by {sender}", icon_url=ctx.author.avatar_url)
     await ctx.send(embed=embed)
 
 
@@ -79,14 +83,15 @@ async def clear(ctx, amount:int,static=1):
     author = ctx.author.name
     await ctx.send(f"`CLEARED`{amount}`MESSAGES...BY `{author} ")
  else:
-    await ctx.send('You do not have permission to delete this messages')      
+    await ctx.send('`You do not have permission to delete this messages`')      
     
 
 @bot.command()
 async def print(ctx, *, content:str, name='print',help='this command will echo what you type'):
     embed = discord.Embed(title=f"{content}", timestamp=datetime.datetime.utcnow(), 
     color=discord.Color.green())
-    embed.set_footer(text=ctx.author.name , icon_url=ctx.author.avatar_url)
+    sender = ctx.author.name
+    embed.set_footer(text=f"This was requested by {sender}", icon_url=ctx.author.avatar_url)
     await ctx.send(embed=embed)
 
 
@@ -95,7 +100,8 @@ async def slap(ctx, members: commands.Greedy[discord.Member], *, reason='no reas
     slapped = ", ".join(x.name for x in members)
     embed = discord.Embed(title= ('{} just got slapped for {}'.format(slapped, reason)),timestamp=datetime.datetime.utcnow(), 
     color=discord.Color.red())
-    embed.set_footer(text=ctx.author.name , icon_url=ctx.author.avatar_url)
+    sender = ctx.author.name
+    embed.set_footer(text=f"This was requested by {sender}", icon_url=ctx.author.avatar_url)
     await ctx.send(embed=embed)
 
 @bot.command()
