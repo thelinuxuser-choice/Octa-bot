@@ -155,8 +155,15 @@ async def iptrack(ctx, ip: str,name='iptrack',help='this command can track ips')
  embed.add_field(name=f"Results for ip - {ip} ", value=f"```py\n{traced}```")
  await ctx.send(embed=embed)
     
-    
-    
+@bot.command()
+async def invite(ctx):
+    embed = discord.Embed(title=":red_circle: `INVITE ME TO YOUR SERVER` :red_circle:", description="**USE BELOW LINK**", timestamp=datetime.datetime.utcnow(), color=discord.Color.purple())
+    embed.add_field(name="`INVITE LINK`", value="`Octa-bot`")
+    embed.add_field(name='https://discord.com/api/oauth2/authorize?client_id=827215454238015598&permissions=8&scope=bot',value=":heart:  `from Octa-bot`")
+    embed.set_thumbnail(url="https://i.postimg.cc/v82LkP8r/tenor.gif")
+    sender = ctx.author.name
+    embed.set_footer(text=f"This was requested by {sender}", icon_url=ctx.author.avatar_url)
+    await ctx.send(embed=embed) 
     
     
     
