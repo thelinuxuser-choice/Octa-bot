@@ -152,7 +152,7 @@ async def iptrack(ctx, ip: str,name='iptrack',help='this command can track ips')
  embed.set_thumbnail(url="https://i.postimg.cc/XvWHrS3d/tenor.gif")
  sender = ctx.author.name
  embed.set_footer(text=f"This was requested by {sender}", icon_url=ctx.author.avatar_url)
- embed.add_field(name=f"Results for ip - {ip} ", value=f"```\n{traced}```")
+ embed.add_field(name=f"Results for ip - {ip} ", value=f"```py\n{traced}```")
  await ctx.send(embed=embed)
     
     
