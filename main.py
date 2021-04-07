@@ -2,11 +2,25 @@ import discord
 from discord.ext import commands
 import datetime 
 import asyncio
+from pretty_help import PrettyHelp, Navigation
 
-bot = commands.Bot(command_prefix='>', description="hi welcome :D ")
 
-@bot.command()
-async def ping(ctx,name='ping',help='this command can bot s latency'):  
+bot = commands.Bot(command_prefix='.', description="BOT IS CODED BY THELINUX-USERCHOICE",help_command=PrettyHelp())
+
+index_title = "welcome Octa-bot help"
+no_category = "react emojis to go up down"
+
+# custom ending note using the command context and help command formatters
+ending_note = "coded by subodha prabash -{ctx.bot.user.name}\nFor command {help.clean_prefix}{help.invoked_with}"
+
+# ":discord:743511195197374563" is a custom discord emoji format. Adjust to match your own custom emoji.
+nav = Navigation("✔")
+color = discord.Color.gold()
+
+bot.help_command = PrettyHelp(index_title=index_title,no_category=no_category,navigation=nav, color=color, active_time=20, ending_note=ending_note)
+
+@bot.command(name='ping',help='this command can bot s latency')
+async def ping(ctx):  
     # Get the latency of the bot
     latency = bot.latency  # Included in the Discord.py library
     # Send it to the user
@@ -15,15 +29,15 @@ async def ping(ctx,name='ping',help='this command can bot s latency'):
     embed.set_footer(text=ctx.author.name, icon_url=ctx.author.avatar_url)
     await ctx.send(embed=embed)
 
-@bot.command()
-async def sum(ctx, numOne: int, numTwo: int,name='sum',help='this command will sums numbers what you insert'):
+@bot.command(name='sum',help='this command will sums numbers what you insert')
+async def sum(ctx, numOne: int, numTwo: int):
     output = (numOne + numTwo)
     embed = discord.Embed(title=f"Sum is {output}", description="", timestamp=datetime.datetime.utcnow(), color=discord.Color.green())
     embed.set_thumbnail(url="https://i.postimg.cc/vBM5csvy/tenor.gif")
     embed.set_footer(text=ctx.author.name, icon_url=ctx.author.avatar_url)
     await ctx.send(embed=embed)
 
-@bot.command()
+@bot.command(name='serverinfo',help='you can get your server info with this')
 async def serverinfo(ctx):
   name = str(ctx.guild.name)
   description = str(ctx.guild.description)
@@ -48,19 +62,6 @@ async def serverinfo(ctx):
   sender = ctx.author.name
   embed.set_footer(text=f"This was requested by {sender}", icon_url=ctx.author.avatar_url)
   await ctx.send(embed=embed) 
-
-
-@bot.command()
-async def helpme(ctx):
-    embed = discord.Embed(title="`COMMANDS LIST`", description="Help list", timestamp=datetime.datetime.utcnow(), color=discord.Color.green())
-    embed.add_field(name="`command name`", value="`help`")
-    embed.add_field(name="`Usage`", value="`>help`")
-    embed.add_field(name="`explained`", value="`shows this`")
-    embed.add_field(name="`Enjoy!`", value="✔`bot is coded by subodha prabash`")
-    embed.set_thumbnail(url="https://i.postimg.cc/sXx0cG8C/868681.png")
-    sender = ctx.author.name
-    embed.set_footer(text=f"This was requested by {sender}", icon_url=ctx.author.avatar_url)
-    await ctx.send(embed=embed)
 
 
 
@@ -91,8 +92,8 @@ async def clear(ctx, amount:int,static=1):
     await ctx.send('`You do not have permission to delete this messages`')      
     
 
-@bot.command()
-async def print(ctx, *, content:str, name='print',help='this command will echo what you type'):
+@bot.command(name='print',help='echo what you types')
+async def print(ctx, *, content:str):
     embed = discord.Embed(title=f"{content}", timestamp=datetime.datetime.utcnow(), 
     color=discord.Color.green())
     sender = ctx.author.name
@@ -100,7 +101,7 @@ async def print(ctx, *, content:str, name='print',help='this command will echo w
     await ctx.send(embed=embed)
 
 
-@bot.command()
+@bot.command(name='slap',help='fun command to slap your friend')
 async def slap(ctx, members: commands.Greedy[discord.Member], *, reason='no reason'):
     slapped = ", ".join(x.name for x in members)
     embed = discord.Embed(title= ('{} `just got slapped for` {}'.format(slapped, reason)),timestamp=datetime.datetime.utcnow(), 
@@ -109,7 +110,7 @@ async def slap(ctx, members: commands.Greedy[discord.Member], *, reason='no reas
     embed.set_footer(text=f"This was requested by {sender}", icon_url=ctx.author.avatar_url)
     await ctx.send(embed=embed)
 
-@bot.command()
+@bot.command(name='greet',help='greet your boss :smile:')
 async def greet(ctx,content:str):
   import asyncio
   message = await ctx.send("`starting greetings `:smile:")
@@ -138,7 +139,7 @@ async def greet(ctx,content:str):
 
 
 
-@bot.command()
+@bot.command(name='hack',help='hack the nasa babe!')
 async def hack(ctx):
   import asyncio
   message = await ctx.send("[:octopus:]`hacking the NASA`")
@@ -158,8 +159,8 @@ async def hack(ctx):
 
     
  
-@bot.command()
-async def iptrack(ctx, ip: str,name='iptrack',help='this command can track ips'):
+@bot.command(name='iptrack',help='tracks any ip instantly')
+async def iptrack(ctx, ip: str):
  from requests import get
  track = get(f'https://ipapi.co/{ip}/json/')
  traced = (track.json())
@@ -170,7 +171,7 @@ async def iptrack(ctx, ip: str,name='iptrack',help='this command can track ips')
  embed.add_field(name=f"Results for ip - {ip} ", value=f"```py\n{traced}```")
  await ctx.send(embed=embed)
     
-@bot.command()
+@bot.command(name='invite',help='invite this bot to your server')
 async def invite(ctx):
     embed = discord.Embed(title=":red_circle: `INVITE ME TO YOUR SERVER` :red_circle:", description="**USE BELOW LINK**", timestamp=datetime.datetime.utcnow(), color=discord.Color.purple())
     embed.add_field(name="`INVITE LINK`", value="`Octa-bot`")
