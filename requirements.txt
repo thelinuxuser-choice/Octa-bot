@@ -1,3 +1,4 @@
 discord.py
 requests 
 discord-pretty-help
+wikipedia
