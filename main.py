@@ -5,7 +5,7 @@ import asyncio
 from pretty_help import PrettyHelp, Navigation
 
 
-bot = commands.Bot(command_prefix='.', description="BOT IS CODED BY THELINUX-USERCHOICE",help_command=PrettyHelp())
+bot = commands.Bot(command_prefix='>', description="BOT IS CODED BY THELINUX-USERCHOICE",help_command=PrettyHelp())
 
 index_title = "welcome Octa-bot help"
 no_category = "react emojis to go up down"
