@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 import datetime 
-
+import asyncio
 
 bot = commands.Bot(command_prefix='>', description="hi welcome :D ")
 
@@ -67,7 +67,14 @@ async def helpme(ctx):
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(activity=discord.Streaming(name="use >help", url="http://www.twitch.tv/accountname"))
+  while True:
+     await bot.change_presence(activity=discord.Game(name="USE >help"))
+     await asyncio.sleep(4)
+     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="USE >help"))
+     await asyncio.sleep(4)
+     await bot.change_presence(activity=discord.Streaming(name="USE >help", url='https://www.twitch.tv/accountname'))
+     await asyncio.sleep(4)
+     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="USE >help"))
     
 
 
