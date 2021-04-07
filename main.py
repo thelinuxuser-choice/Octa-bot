@@ -181,7 +181,15 @@ async def invite(ctx):
     embed.set_footer(text=f"This was requested by {sender}", icon_url=ctx.author.avatar_url)
     await ctx.send(embed=embed) 
     
-    
+@bot.command(name='angry',help='report command on Octa-bot')
+async def angry(ctx, members: commands.Greedy[discord.Member], *, reason='bad personality'):
+    slapped = ", ".join(x.name for x in members)
+    embed = discord.Embed(title= ('{} was reported for {}'.format(slapped, reason)),timestamp=datetime.datetime.utcnow(), 
+    color=discord.Color.red())
+    embed.set_thumbnail(url="https://i.postimg.cc/8c7SrwMb/813436939738677267.gif")
+    embed.set_footer(text=ctx.author.name , icon_url=ctx.author.avatar_url)
+    embed.add_field(name="Pease ping @moderator to report this guy", value="```py\nDo not use this as a joke because if you unnecessary used this you will get kicked or banned by server owner/admin/mod {this command is for your safety and democracy!}```")
+    await ctx.send(embed=embed)    
     
     
     
