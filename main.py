@@ -3,7 +3,8 @@ from discord.ext import commands
 import datetime 
 import asyncio
 from pretty_help import PrettyHelp, Navigation
-
+import base64
+import traceback
 
 bot = commands.Bot(command_prefix='>', description="BOT IS CODED BY THELINUX-USERCHOICE",help_command=PrettyHelp())
 
@@ -206,6 +207,45 @@ async def google(ctx,content:str):
  embed.add_field(name=f"Results for {content} ", value=f"```py\n{txt}```")
  await ctx.send(embed=embed)    
     
-    
+@bot.command(name='b64',help='this can encode and decode base64')
+async def b64(ctx,tag,*,inputb64):
+    try:
+        outputdec=None
+        outputenc=None
+
+        if tag in ["-e","--encode"]: 
+            encoded_as_bytes = base64.b64encode(inputb64.encode("utf-8"))
+            outputenc = str(encoded_as_bytes , "utf-8")
+            embed = discord.Embed(title=f"**your encoded b64 output of**  `{inputb64}`  **is** -----> `{outputenc}`", description="", timestamp=datetime.datetime.utcnow(), color=discord.Color.green())
+            embed.set_thumbnail(url="https://i.postimg.cc/hjSLVLVJ/tenor.gif")
+            embed.set_footer(text=ctx.author.name, icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
+
+            #await ctx.send(f'**your encoded b64 output of**  `{inputb64}`  **is** -----> `{outputenc}`')
+
+        if tag in ["-d","--decode"]:
+            decoded_as_bytes = base64.b64decode(inputb64.encode("utf-8"))
+            outputdec = str(decoded_as_bytes , "utf-8")
+            embed = discord.Embed(title=f"**your decoded base64 output of** `{inputb64}`  **is** -----> `{outputdec}`", description="", timestamp=datetime.datetime.utcnow(), color=discord.Color.green())
+            embed.set_thumbnail(url="https://i.postimg.cc/mr4CGYXd/tenor.gif")
+            embed.set_footer(text=ctx.author.name, icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
+            #await ctx.send(f'**your decoded base64 output of** `{inputb64}`  **is** -----> `{outputdec}`')
+
+        if outputdec == None and outputenc == None:
+            embed = discord.Embed(title="`pls check the tag and try again (-e/-d)`\n`use -e to encode base64 and -d to decode base64`\n`example:>b64 -e test `\n`example:>b64 -d dGVzdA==`", description="", timestamp=datetime.datetime.utcnow(), color=discord.Color.green())
+            embed.set_thumbnail(url="https://i.postimg.cc/gj1Lt8LH/tenor.gif")
+            embed.set_footer(text=ctx.author.name, icon_url=ctx.author.avatar_url)
+            await ctx.send(embed=embed)
+            #await ctx.send("`pls check the tag and try again (-e/-d)`\n`use -e to encode base64 and -d to decode base64`\n`example:>b64 -e test `\n`example:>b64 -d dGVzdA==`")
+
+        else:
+            print('erros')
+
+    except Exception:
+            traceback.print_exc()
+            print("error")
+
+           
 
 bot.run('ODI3MjE1NDU0MjM4MDE1NTk4.YGXybQ.fRp13Oxwr9iIolzwmevBVWBr4tg')
