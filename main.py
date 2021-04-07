@@ -191,7 +191,20 @@ async def angry(ctx, members: commands.Greedy[discord.Member], *, reason='bad pe
     embed.add_field(name="Pease ping @moderator to report this guy", value="```py\nDo not use this as a joke because if you unnecessary used this you will get kicked or banned by server owner/admin/mod {this command is for your safety and democracy!}```")
     await ctx.send(embed=embed)    
     
-    
+@bot.command(name='google',help='search it! :hehe:')
+async def google(ctx,content:str): 
+ message = await ctx.send("`if this didn't donot gives a output donot worry , it means there is no such wikis on you requested.`")
+ await asyncio.sleep(5)
+ await message.edit(content="`tip=try using same but different{synonyms}`")
+  
+ import wikipedia
+ txt =  wikipedia.summary(f"{content}",sentences=2)
+ embed = discord.Embed(title=":small_red_triangle:GOOGLE:small_red_triangle_down: ", description="**Just google it! but sometimes it doesn't give you output it means there i no wiki of you requested**" , timestamp=datetime.datetime.utcnow(), color=discord.Color.green())
+ embed.set_thumbnail(url="https://i.postimg.cc/437ZyXkS/tenor.gif")
+ sender = ctx.author.name
+ embed.set_footer(text=f"This was requested by {sender}", icon_url=ctx.author.avatar_url)
+ embed.add_field(name=f"Results for {content} ", value=f"```py\n{txt}```")
+ await ctx.send(embed=embed)    
     
     
 
