@@ -18,10 +18,9 @@ async def ping(ctx,name='ping',help='this command can bot s latency'):
 @bot.command()
 async def sum(ctx, numOne: int, numTwo: int,name='sum',help='this command will sums numbers what you insert'):
     output = (numOne + numTwo)
-    embed = discord.Embed(title=f"`Sum is` {output}", description="i ❤ sums", timestamp=datetime.datetime.utcnow(), color=discord.Color.green())
-    embed.set_thumbnail(url="https://i.postimg.cc/XNyV8r9b/download.jpg")
-    sender = ctx.author.name
-    embed.set_footer(text=f"This was requested by {sender}", icon_url=ctx.author.avatar_url)
+    embed = discord.Embed(title=f"Sum is {output}", description="", timestamp=datetime.datetime.utcnow(), color=discord.Color.green())
+    embed.set_thumbnail(url="https://i.postimg.cc/vBM5csvy/tenor.gif")
+    embed.set_footer(text=ctx.author.name, icon_url=ctx.author.avatar_url)
     await ctx.send(embed=embed)
 
 @bot.command()
