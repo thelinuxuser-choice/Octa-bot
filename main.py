@@ -182,6 +182,7 @@ async def invite(ctx):
     embed.add_field(name="`INVITE LINK`", value="`Octa-bot`")
     embed.add_field(name='||https://discord.com/api/oauth2/authorize?client_id=827215454238015598&permissions=8&scope=bot||',value=":heart:  `from Octa-bot`")
     embed.set_thumbnail(url="https://i.postimg.cc/v82LkP8r/tenor.gif")
+    embed.add_field(name="`Send a message to dev`", value="||Anonymous |Doctor#1890||")
     sender = ctx.author.name
     embed.set_footer(text=f"This was requested by {sender}", icon_url=ctx.author.avatar_url)
     await ctx.send(embed=embed) 
