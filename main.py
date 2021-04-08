@@ -320,7 +320,25 @@ async def mineach(ctx, text: str, icon = None):
     file = discord.File(image_bytes, "achievement.png")
     await ctx.send(f"`Rendered by {ctx.author}`", file=file)
 
+@bot.command()
+async def supreme(ctx, text: str):
+  """just displays your text on supreme background"""
+  # Embed
+  #embed = discord.Embed(title = f"Rendered by {ctx.author}")  # this is a example, everything is optional.
+  #embed.set_image(url = "attachment://supreme.png")  # attaching file image to embed.
+  # Wrapper
+  #image = await alex_api.supreme(text = text)  # get Image object
+  #image_bytes = await image.read()  # get io.BytesIO object
+  # Sending
+  #file = discord.File(image_bytes, "supreme.png") # pass io.BytesIO object to discord.File with a filename.
+  #await ctx.send(embed=embed, file=file) # send both the embed and file, the file will attach to the embed.
 
+  # Or ----
+
+  # Oneline, because oneline = best
+  embed = discord.Embed(title = f"Rendered by {ctx.author}").set_image(url="attachment://supreme.png")
+  image = discord.File(await (await alex_api.supreme(text=text)).read(), "supreme.png")
+  await ctx.send(embed=embed, file=image)
 
 
 
