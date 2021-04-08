@@ -22,7 +22,10 @@ ending_note = "coded by subodha prabash -{ctx.bot.user.name}\nFor command {help.
 nav = Navigation("✔")
 color = discord.Color.gold()
 
+
 bot.help_command = PrettyHelp(index_title=index_title,no_category=no_category,navigation=nav, color=color, active_time=20, ending_note=ending_note)
+cogs = ["on_message"]
+
 
 @bot.command(name='ping',help='this command can bot s latency')
 async def ping(ctx):  
