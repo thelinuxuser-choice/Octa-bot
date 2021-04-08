@@ -312,6 +312,13 @@ async def bird(ctx):
     await ctx.send(embed=embed)
     #await ctx.send(birbimg)  
 
+@bot.command()
+async def mineach(ctx, text: str, icon = None): 
+    """Displays a minecraft achievemt"""
+    image = await alex_api.achievement(text=text, icon=icon)
+    image_bytes = await image.read()
+    file = discord.File(image_bytes, "achievement.png")
+    await ctx.send(f"`Rendered by {ctx.author}`", file=file)
 
 
 
