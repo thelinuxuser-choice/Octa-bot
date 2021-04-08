@@ -5,6 +5,10 @@ import asyncio
 from pretty_help import PrettyHelp, Navigation
 import base64
 import traceback
+import alexflipnote
+
+
+
 
 bot = commands.Bot(command_prefix='>', description="BOT IS CODED BY THELINUX-USERCHOICE",help_command=PrettyHelp())
 
@@ -246,6 +250,77 @@ async def b64(ctx,tag,*,inputb64):
             traceback.print_exc()
             print("error")
 
-           
+alex_api = alexflipnote.Client("5uOCt80cmEsUbaJoCz1Weie4CAqcOodm6PWnC1AK")
+
+
+@bot.command()#cat
+async def cat(ctx):
+    """gives you a cute cat image!"""
+    embed = discord.Embed()
+    catimg = await alex_api.cats()
+    embed = discord.Embed(title= ('CUTY CATTY'),timestamp=datetime.datetime.utcnow(), 
+    color=discord.Color.green())
+    embed.set_footer(text=ctx.author.name , icon_url=ctx.author.avatar_url)
+    embed.set_image(url=f"{catimg}")
+    #embed.set_thumbnail(url="https://i.postimg.cc/mr4CGYXd/tenor.gif")   
+    #await ctx.send(catimg)
+    await ctx.send(embed=embed)
+
+@bot.command()#fml
+async def fml(ctx):
+    """gives you an incident that fvked mah life forever""" 
+    fmlimg = await alex_api.fml()
+    embed = discord.Embed(title= ('FML JOKES :smile:'),timestamp=datetime.datetime.utcnow(), 
+    color=discord.Color.green())
+    embed.set_thumbnail(url="https://i.postimg.cc/pyNYcc7Y/tenor.gif")
+    sender = ctx.author.name
+    embed.set_footer(text=f"This was requested by {sender}", icon_url=ctx.author.avatar_url)
+    embed.add_field(name=f"HA HA HA!", value=f"```py\n{fmlimg}```")
+    await ctx.send(embed=embed)
+    #await ctx.send(f"```py\n{fmlimg}```")
+
+@bot.command()#dog
+async def dog(ctx):
+    """shows you a image of a cute doggo"""
+    dogimg = await alex_api.dogs()
+    embed = discord.Embed(title= ('CUTE DOGGO'),timestamp=datetime.datetime.utcnow(), 
+    color=discord.Color.green())
+    embed.set_footer(text=ctx.author.name , icon_url=ctx.author.avatar_url)
+    embed.set_image(url=f"{dogimg}")
+    await ctx.send(embed=embed)
+    #await ctx.send(dogimg)
+
+@bot.command()#poorly_photoshopped_sadcat
+async def sadcat(ctx):
+    """ image of a sad cat UwU"""
+    sadcatimg = await alex_api.sadcat()
+    embed = discord.Embed(title= ('SAD CAT UwU'),timestamp=datetime.datetime.utcnow(), 
+    color=discord.Color.green())
+    embed.set_footer(text=ctx.author.name , icon_url=ctx.author.avatar_url)
+    embed.set_image(url=f"{sadcatimg}")
+    await ctx.send(embed=embed)
+    #await ctx.send(sadcatimg)
+
+@bot.command()
+async def bird(ctx):
+    """gives a bird image"""
+    birdimg = await alex_api.birb()
+    embed = discord.Embed(title= ('BIRDS 0_0'),timestamp=datetime.datetime.utcnow(), 
+    color=discord.Color.green())
+    embed.set_footer(text=ctx.author.name , icon_url=ctx.author.avatar_url)
+    embed.set_image(url=f"{birdimg}")
+    await ctx.send(embed=embed)
+    #await ctx.send(birbimg)  
+
+
+
+
+
+
+
+
+
+
+
 
 bot.run('ODI3MjE1NDU0MjM4MDE1NTk4.YGXybQ.fRp13Oxwr9iIolzwmevBVWBr4tg')
