@@ -74,13 +74,13 @@ async def serverinfo(ctx):
 @bot.event
 async def on_ready():
   while True:
-     await bot.change_presence(activity=discord.Game(name="USE >help"))
+     await bot.change_presence(activity=discord.Game(name="🌹USE >help📜 "))
      await asyncio.sleep(4)
-     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="USE >help"))
+     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="🐙USE >help📜 "))
      await asyncio.sleep(4)
-     await bot.change_presence(activity=discord.Streaming(name="USE >help", url='https://www.twitch.tv/accountname'))
+     await bot.change_presence(activity=discord.Streaming(name="😜USE >help📜 ", url='https://www.twitch.tv/accountname'))
      await asyncio.sleep(4)
-     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="USE >help"))
+     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="💖USE >help📜 "))
     
 
 
