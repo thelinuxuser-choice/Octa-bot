@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import datetime 
 import asyncio
-from pretty_help import PrettyHelp, Navigation
+from pretty_help import PrettyHelp
 import base64
 import traceback
 import alexflipnote
