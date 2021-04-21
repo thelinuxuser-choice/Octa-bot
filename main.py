@@ -76,7 +76,7 @@ async def serverinfo(ctx):
 @bot.event
 async def on_ready():
 
-    await bot.change_presence(activity=discord.Game(name=f"g!help| Guilds: {len(bot.guilds)} "))
+    await bot.change_presence(activity=discord.Game(name=f">help| Guilds: {len(bot.guilds)} "))
     print('We have logged in as {0.user}\n'.format(bot))
 
 
