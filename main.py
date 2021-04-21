@@ -12,18 +12,6 @@ import alexflipnote
 
 bot = commands.Bot(command_prefix='>', description="BOT IS CODED BY THELINUX-USERCHOICE",help_command=PrettyHelp())
 
-index_title = "welcome Octa-bot help"
-no_category = "react emojis to go up down"
-
-# custom ending note using the command context and help command formatters
-ending_note = "coded by subodha prabash -{ctx.bot.user.name}\nFor command {help.clean_prefix}{help.invoked_with}"
-
-# ":discord:743511195197374563" is a custom discord emoji format. Adjust to match your own custom emoji.
-nav = Navigation("✔")
-color = discord.Color.gold()
-
-
-bot.help_command = PrettyHelp(index_title=index_title,no_category=no_category,navigation=nav, color=color, active_time=20, ending_note=ending_note)
 cogs = ["on_message"]
 
 
