@@ -75,24 +75,10 @@ async def serverinfo(ctx):
 
 @bot.event
 async def on_ready():
-   print('We have logged in as {0.user}'.format(bot))
-   print('Servers connected to:')
-   for cog in cogs:
-    try:
-        bot.load_extension(cog)
-        print(f"{cog} was loaded.")
-    except Exception as e:
-        print(e)
-   for guild in bot.guilds:
-        print(f'name:{guild.name}\nguild id:{guild.id}') 
-   while True:
-    await bot.change_presence(activity=discord.Game(name="🌹USE >help📜 "))
-    await asyncio.sleep(4)
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="🐙USE >help📜 "))
-    await asyncio.sleep(4)
-    await bot.change_presence(activity=discord.Streaming(name="😜USE >help📜 ", url='https://www.twitch.tv/accountname'))
-    await asyncio.sleep(4)
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="💖USE >help📜 "))
+
+    await bot.change_presence(activity=discord.Game(name=f"g!help|Guilds: {len(bot.guilds)}|Members:{len(bot.users)}"))
+    print('We have logged in as {0.user}\n'.format(bot))
+
     
 
 
