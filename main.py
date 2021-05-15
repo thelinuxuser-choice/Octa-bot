@@ -62,10 +62,18 @@ async def serverinfo(ctx):
 
 
 @bot.event
-async def on_ready():
-
+async def on_ready():    
     await bot.change_presence(activity=discord.Game(name=f">help| Guilds: {len(bot.guilds)} "))
+    
     print('We have logged in as {0.user}\n'.format(bot))
+    for cog in cogs:
+        try:
+            bot.load_extension(cog)
+            print(f"{cog} loaded successfully")
+        except Exception as e:
+            print(e)
+    
+
 
 
     
