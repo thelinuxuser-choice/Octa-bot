@@ -246,7 +246,7 @@ async def b64(ctx,tag,*,inputb64):
             traceback.print_exc()
             print("error")
 
-alex_api = alexflipnote.Client("5uOCt80cmEsUbaJoCz1Weie4CAqcOodm6PWnC1AK")
+alex_api = alexflipnote.Client("{alex_api_token_here}")
 
 
 @bot.command()#cat
@@ -344,4 +344,4 @@ async def supreme(ctx, text: str):
 
 
 
-bot.run('ODI3MjE1NDU0MjM4MDE1NTk4.YGXybQ.fRp13Oxwr9iIolzwmevBVWBr4tg')
+bot.run('{your_token_here}')
