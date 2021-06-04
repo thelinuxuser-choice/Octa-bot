@@ -1,5 +1,6 @@
 # Octa-bot
 # Ask your questions through Discussions, I will definately help you!
+![exaple](https://i.postimg.cc/c4J22BvR/ss.png)
 
 <h1 align="center" height='30'>Hi there, I'm <a href="https://thelinuxuser-choice.github.io/" target="_blank">Frustrated you know that</a> 
 <img src='https://media.giphy.com/media/bcKmIWkUMCjVm/giphy.gif' width='200' ></h1> 
